@@ -34,13 +34,13 @@ main()
 {
 	for repository in $(cat $1)
 	do
-		cd ..
+		cd .. >/dev/null
 		if [ -d "${repository}" ]; then
 			git_status ${repository}
 		else
 			echo "Error ${repositories} does not exist"
 		fi
-		cd -
+		cd - >/dev/null
 	done
 }
 
