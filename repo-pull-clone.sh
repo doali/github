@@ -49,7 +49,7 @@ usage()
 	echo "Usage: $(basename $0) <file_lst_repo>"
 }
 
-# ==================================
+# =========================================
 if [ ${#} -eq 0 ]; then
 	if [ -f ${LST_REPO} ]; then
 		main ${LST_REPO}

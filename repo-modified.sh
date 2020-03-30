@@ -16,8 +16,9 @@ git_status()
 	local repository="$1"
 
 	pushd ${repository} > /dev/null
-	echo -e "${repository} processed..."
+	echo -e "\033[01;34m${repository}\033[00m processed..."
 	git status -s
+	git checkout
 	popd > /dev/null
 }
 
@@ -42,7 +43,7 @@ usage()
 	echo -ne "\t$(basename $0)"
 }
 
-# ==================================
+# =========================================
 if [ ${#} -eq 0 ]; then
 	if [ -f ${LST_REPO} ]; then
 		main ${LST_REPO}
