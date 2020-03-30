@@ -5,7 +5,7 @@
 # - if changes exist then notify
 # from the working directory
 # -----------------------------------------
-# samedi 28 mars 2020, 15:19:29 (UTC+0100)
+# lundi 30 mars 2020, 17:25:12 (UTC+0200)
 # =========================================
 
 readonly URL_GITHUB=https://github.com/doali
@@ -16,9 +16,17 @@ git_status()
 	local repository="$1"
 
 	pushd ${repository} > /dev/null
-	echo -e "\033[01;34m${repository}\033[00m processed..."
+
+	local nb_commit=$(git checkout | grep "by\ [0-9]*" | cut -d\  -f 8)
+	local info="\033[01;34m${repository}\033[00m processed..."
+
+	if [ -z "${nb_commit}" ]; then
+		echo -e ${info}
+	else
+		echo -e "${info}  \033[0;34m--(°v°)~> [${nb_commit}]\033[00m"
+	fi
+
 	git status -s
-	git checkout
 	popd > /dev/null
 }
 
