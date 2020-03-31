@@ -15,11 +15,11 @@ readonly LST_REPO=repo-list-github
 pull()
 {
 	local repository="$1"
+  
+  echo -e "\033[01;34m${repository}\033[00m processing..."
 
-	echo -ne "${repository}"
 	pushd ${repository} > /dev/null
-	echo -ne " <- "
-	git pull
+	git pull 
 	popd > /dev/null
 }
 
@@ -34,13 +34,13 @@ main()
 {
 	for repository in $(cat $1)
 	do
-		cd ..
+		cd .. > /dev/null
 		if [ -d "${repository}" ]; then
 			pull ${repository}
 		else
 			clone ${repository}
 		fi
-		cd -
+		cd - > /dev/null
 	done
 }
 
