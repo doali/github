@@ -15,8 +15,8 @@ readonly LST_REPO=repo-list-github
 pull()
 {
 	local repository="$1"
-  
-  echo -e "\033[01;34m${repository}\033[00m processing..."
+
+	echo -e "\033[01;34m${repository}\033[00m processing..."
 
 	pushd ${repository} > /dev/null
 	git pull 
