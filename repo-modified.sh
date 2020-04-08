@@ -38,7 +38,7 @@ main()
 		if [ -d "${repository}" ]; then
 			git_status ${repository}
 		else
-			echo "Error ${repositories} does not exist"
+			echo "Error ${repository} does not exist"
 		fi
 		cd - >/dev/null
 	done
@@ -47,8 +47,9 @@ main()
 usage()
 {
 	echo "Usage:"
-	echo -ne "\t$(basename $0) <file_lst_repo>"
-	echo -ne "\t$(basename $0)"
+	echo -e "\t$(basename $0)"
+	echo -e "\t$(basename $0) --file <file_lst_repo>"
+	echo -e "\t$(basename $0) --help"
 }
 
 # =========================================
@@ -59,14 +60,27 @@ if [ ${#} -eq 0 ]; then
 		usage
 	fi
 else
-	if [ ${#} -eq 1 ]; then
-		if [ -f $1 ]; then
-			main $1
-		else
-			echo "Error $1 does not exist"
-		fi
-	else
-		usage
+	if [ ${#} -ge 3 ]; then
+    usage
+  else
+    case "${1}" in
+      -h|--h|-help|--help)
+        usage
+        ;;
+      --file)
+        if [ ${#} -eq 2 ]; then
+          if [ -f $2 ]; then
+            main $2
+          else
+            echo "Error $2 does not exist"
+          fi
+        else
+          usage
+        fi
+        ;;
+      *)
+        usage
+        ;;
+    esac
 	fi
 fi
-
