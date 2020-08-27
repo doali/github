@@ -19,7 +19,7 @@ pull()
 	echo -e "\033[01;34m${repository}\033[00m processing..."
 
 	pushd ${repository} > /dev/null
-	git pull 
+	git pull --no-rebase
 	popd > /dev/null
 }
 
