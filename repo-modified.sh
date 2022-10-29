@@ -17,7 +17,7 @@ git_status()
 
 	pushd ${repository} > /dev/null
 
-	local nb_commit=$(git checkout | grep "by\ [0-9]*" | cut -d\  -f 8)
+	local nb_commit=$(git checkout | grep "by [0-9]*" | cut -d\  -f 8)
 	local info="\033[01;34m${repository}\033[00m processed..."
 
 	if [ -z "${nb_commit}" ]; then
