@@ -36,3 +36,14 @@ cd ${HOME}/git-github/github 1> /dev/null
 cd - 1> /dev/null
 ```
 
+### Another way
+
+```bash
+xlj@VM-CENTOS7 ~ $ cat ~/.local/bin/repo-modified
+#!/usr/bin/env bash
+
+bash -c "cd ${HOME}/git-github/github && ./repo-modified.sh"
+xlj@VM-CENTOS7 ~ $ chmod +x ~/.local/bin/repo-modified
+```
+
+> ... the same for repo-pull-clone
