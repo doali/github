@@ -39,10 +39,14 @@ cd - 1> /dev/null
 ### Another way
 
 ```bash
-xlj@VM-CENTOS7 ~ $ cat ~/.local/bin/repo-modified
+xlj@VM-CENTOS7 ~ $ cat <<'EOF' >~/.local/bin/repo-modified
 #!/usr/bin/env bash
 
-bash -c "cd ${HOME}/git-github/github && ./repo-modified.sh"
+cd ${HOME}/git-github/github && ./repo-modified.sh
+EOF
+```
+
+``` bash
 xlj@VM-CENTOS7 ~ $ chmod +x ~/.local/bin/repo-modified
 ```
 
